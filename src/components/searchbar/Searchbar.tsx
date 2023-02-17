@@ -1,19 +1,16 @@
 import React, { useState } from "react";
-import { useRouter } from "next/router";
+import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 
 const Searchbar = () => {
   const [searchInput, setSearchInput] = useState("");
-  const countries = [
-    { name: "Belgium", continent: "Europe" },
-    { name: "India", continent: "Asia" },
-    { name: "Bolivia", continent: "South America" },
-  ];
-  const handleChange = (e: any) => {
-    return "må lages funksjon her";
+
+  const handleChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchInput(evt.currentTarget.value);
   };
 
   return (
-    <div className="absolute left-[8rem] top-[27rem] flex w-[40rem] flex-row gap-4 rounded-lg bg-white p-5 text-lg text-stone-900 shadow-md">
+    <div className=" z-10 my-4 flex max-w-md gap-4 rounded-lg bg-white p-5 text-lg text-stone-900 shadow-md">
+      <MagnifyingGlassIcon className="h-7 w-7" strokeWidth={1.5} />
       <input
         className="w-full "
         type="text"
