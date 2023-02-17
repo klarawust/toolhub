@@ -2,9 +2,10 @@ import { type NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
 import Navbar from "../components/navbar/Navbar";
+import Searchbar from "../components/searchbar/Searchbar";
 import { signIn, signOut, useSession } from "next-auth/react";
-
 import { api } from "../utils/api";
+import Button, { IconOptions } from "../components/buttons/Button";
 
 const Home: NextPage = () => {
   return (
@@ -17,6 +18,33 @@ const Home: NextPage = () => {
       <main className="flex min-h-screen flex-col items-center justify-center bg-gray-100">
         <Navbar />
         <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 "></div>
+        <div className="absolute top-[14rem] left-[8rem]">
+          <p className="font-sofia text-8xl font-bold text-emerald-700">
+            LEI <br></br> UTSTYR
+          </p>
+        </div>
+        <div className="absolute bottom-[0rem] right-[3rem]">
+          <svg
+            width="807"
+            height="573"
+            viewBox="0 0 807 673"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M0 403.5C0 180.653 180.653 0 403.5 0C626.347 0 807 180.653 807 403.5V673H0V403.5Z"
+              fill="#047857"
+            />
+          </svg>
+        </div>
+        <Searchbar></Searchbar>
+        <div className=" flex-row gap-2">
+          <Button icon={IconOptions.Wrench} text="Håndverktøy" />
+          <Button icon={IconOptions.Bolt} text="Elektroverktøy" />
+        </div>
+        <p className="absolute left-[8.5rem] top-[38rem] text-sm text-emerald-700">
+          Eller lag en ny annonse
+        </p>
       </main>
     </>
   );

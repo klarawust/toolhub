@@ -4,17 +4,21 @@ import {
   UserCircleIcon,
   HeartIcon,
   PlusIcon,
+  WrenchScrewdriverIcon,
+  BoltIcon,
 } from "@heroicons/react/24/outline";
 
 export enum IconOptions {
   UserCircle = "UserCircle",
   Heart = "Heart",
   Plus = "Plus",
+  Wrench = "Wrench",
+  Bolt = "Bolt",
 }
 
 interface ButtonProps {
   text?: string;
-  icon: IconOptions;
+  icon?: IconOptions;
   onClick?: () => void;
 }
 
@@ -32,6 +36,12 @@ const Button: React.FC<ButtonProps> = ({ text, icon, onClick }) => {
       ) : null}
       {icon === IconOptions.Plus ? (
         <PlusIcon className="h-7 w-7" strokeWidth={1.5} />
+      ) : null}
+      {icon === IconOptions.Wrench ? (
+        <WrenchScrewdriverIcon className="h-7 w-7" strokeWidth={1.5} />
+      ) : null}
+      {icon === IconOptions.Bolt ? (
+        <BoltIcon className="h-7 w-7" strokeWidth={1.5} />
       ) : null}
       {text ? <p className="ml-2">{text}</p> : null}
     </button>
