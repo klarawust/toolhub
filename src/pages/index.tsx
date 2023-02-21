@@ -11,9 +11,11 @@ import ToolFeed from "./toolFeed";
 
 import { api } from "../utils/api";
 
-import router from "next/router";
+import { useRouter } from "next/router";
 
 const Home: NextPage = () => {
+  const router = useRouter();
+
   return (
     <>
       <Head>
@@ -47,7 +49,12 @@ const Home: NextPage = () => {
               text="Elektroverktøy"
             />
           </div>
-          <p className="text-sm text-emerald-700">Eller lag en ny annonse</p>
+          <p
+            className="text-md cursor-pointer text-emerald-700"
+            onClick={() => void router.push("/ny-annonse")}
+          >
+            Eller lag en ny annonse
+          </p>
         </section>
         <div className="invisible absolute bottom-0 right-12 z-0 xl:visible">
           <svg

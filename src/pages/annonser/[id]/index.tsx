@@ -24,7 +24,7 @@ const NyAnnonse: NextPage = () => {
   const { id } = router.query;
 
   // get advert by id
-  const { data: advert } = api.advertisment.getOne.useQuery(
+  const { data: advert } = api.advertisement.getOne.useQuery(
     {
       id: id as string,
     },
