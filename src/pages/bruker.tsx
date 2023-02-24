@@ -68,24 +68,24 @@ const Profile: NextPage = () => {
                 label = "E-mail adresse" 
                 name="e-mail"
                 placeholder="eksempel@mail.no"
-                defaultValue={currentUser?.email}
+                defaultValue={currentUser?.email??""}
                 disabled/>
                 <InputField 
                 label = "Telefonnummer" 
                 name="phone"
                 type="tel"
-                defaultValue={currentUser?.phone}
+                defaultValue={currentUser?.phone??""}
                 placeholder="12345678"/>
                 <InputField 
                 label = "Adresse" 
                 name="address"
                 type="address"
-                defaultValue={currentUser?.address}
+                defaultValue={currentUser?.address??""}
                 placeholder="Daudbilbakken 1A"/>
                 <InputField 
                 label = "By" 
                 name="city"
-                defaultValue={currentUser?.city}
+                defaultValue={currentUser?.city??""}
                 placeholder="Andeby"
                 />
               <div className="w-[15rem] self-end py-4">
