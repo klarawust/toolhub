@@ -55,6 +55,7 @@ model User {
     accounts      Account[]
     sessions      Session[]
     adverts       Advert[]
+    favorite      UserFavoritedAdvert[]
 }
 
 model Advert {
@@ -69,6 +70,7 @@ model Advert {
   authorId        String
   SubCategory     SubCategory? @relation(fields: [subCategoryName], references: [name])
   subCategoryName String?
+  favorite        UserFavoritedAdvert[]
 }
 
 model VerificationToken {
@@ -89,6 +91,14 @@ model SubCategory {
   category     Category @relation(fields: [categoryName], references: [name], onDelete: Cascade)
   categoryName String
   Adverts      Advert[]
+}
+
+model UserFavoritedAdvert {
+  relationId String      @id @default(cuid())
+  user       User        @relation(fields: [userId], references: [id])
+  userId     String      
+  advert     Advert      @relation(fields: [advertId], references: [id])
+  advertId   String
 }
 
 // create a category with subcategories
