@@ -20,7 +20,10 @@ const Home: NextPage = () => {
     const target = e.target as typeof e.target & {
       search: { value: string };
     };
-    router.push({pathname: "/annonser", query: {searchInput: target.search.value}});
+    router.push({
+      pathname: "/annonser",
+      query: { searchInput: target.search.value },
+    });
   };
   return (
     <>
@@ -37,32 +40,72 @@ const Home: NextPage = () => {
             LEI UTSTYR
           </p>
           <form onSubmit={handleSearchSubmit}>
-            <Searchbar/>
+            <Searchbar />
           </form>
-          
+
           <div className="mb-8 flex gap-2">
-            {/* Knapper for kategorier */}
-            <Button
-              color={ColorOptions.white}
-              icon={IconOptions.QueueList}
-              onClick={() => void router.push({pathname: "/annonser", query: {categoryName: "alle"}})} // Sender "alle" for å få alle annonser
-              text="Alle verktøy"
-              square={true}
-            />
-            <Button
-              color={ColorOptions.white}
-              icon={IconOptions.Wrench}
-              onClick={() => void router.push({pathname: "/annonser", query: {categoryName: "Håndverktøy"}})}
-              text="Håndverktøy"
-              square={true}
-            />
-            <Button
-              color={ColorOptions.white}
-              icon={IconOptions.Bolt}
-              onClick={() => void router.push({pathname: "/annonser", query: {categoryName: "Elektroverktøy"}})}
-              text="Elektroverktøy"
-              square={true}
-            />
+            <div className="flex w-[35rem] flex-row flex-wrap gap-2">
+              <Button
+                color={ColorOptions.white}
+                icon={IconOptions.QueueList}
+                onClick={() =>
+                  void router.push({
+                    pathname: "/annonser",
+                    query: { categoryName: "alle" },
+                  })
+                } // Sender "alle" for å få alle annonser
+                text="Alle verktøy"
+                square={true}
+              />
+              <Button
+                color={ColorOptions.white}
+                icon={IconOptions.Wrench}
+                onClick={() =>
+                  void router.push({
+                    pathname: "/annonser",
+                    query: { categoryName: "Håndverktøy" },
+                  })
+                }
+                text="Håndverktøy"
+                square={true}
+              />
+              <Button
+                color={ColorOptions.white}
+                icon={IconOptions.Bolt}
+                onClick={() =>
+                  void router.push({
+                    pathname: "/annonser",
+                    query: { categoryName: "Elektroverktøy" },
+                  })
+                }
+                text="Elektroverktøy"
+                square={true}
+              />
+              <Button
+                color={ColorOptions.white}
+                icon={IconOptions.Sun}
+                onClick={() =>
+                  void router.push({
+                    pathname: "/annonser",
+                    query: { categoryName: "Hage" },
+                  })
+                }
+                text="Hage"
+                square={true}
+              />
+              <Button
+                color={ColorOptions.white}
+                icon={IconOptions.Question}
+                onClick={() =>
+                  void router.push({
+                    pathname: "/annonser",
+                    query: { categoryName: "Annet" },
+                  })
+                }
+                text="Annet"
+                square={true}
+              />
+            </div>
           </div>
           <p
             className="text-md mt-[-0.5rem] cursor-pointer text-emerald-700"
@@ -88,19 +131,19 @@ const Home: NextPage = () => {
             src="/images/woman_painting_wall.webp"
             width="350"
             height="350"
-            className="animate-hovering-medium absolute bottom-[8rem] rounded-md shadow-md"
+            className="absolute bottom-[8rem] animate-hovering-medium rounded-md shadow-md"
           />
           <Image
             src="/images/kid_with_shovel.jpeg"
             width="300"
             height="300"
-            className="animate-hovering-fast absolute bottom-[26rem] right-[28.5rem] rounded-md shadow-md"
+            className="absolute bottom-[26rem] right-[28.5rem] animate-hovering-fast rounded-md shadow-md"
           />
           <Image
             src="/images/man_with_planks.jpg"
             width="400"
             height="400"
-            className="animate-hovering-slow absolute bottom-[14rem] right-[0rem] rounded-md shadow-md"
+            className="absolute bottom-[14rem] right-[0rem] animate-hovering-slow rounded-md shadow-md"
           />
         </div>
       </main>

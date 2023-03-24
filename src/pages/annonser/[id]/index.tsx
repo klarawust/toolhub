@@ -19,7 +19,7 @@ import Container from "../../../components/annonse/Container";
 import Swiper from "../../../components/swiper/Swiper";
 import { HeartIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
-import {Rating} from '@mui/material';
+import { Rating } from "@mui/material";
 
 const NyAnnonse: NextPage = () => {
   const { data: sessionData } = useSession();
@@ -57,10 +57,9 @@ const NyAnnonse: NextPage = () => {
     }
   );
 
-  const {data: ratings} = api.rating.getRatings.useQuery({
+  const { data: ratings } = api.rating.getRatings.useQuery({
     id: author?.id as string,
   });
-  
 
   const { mutate: favoriteAdvert } = api.favorite.favoriteAd.useMutation({
     onSuccess: (data) => {
@@ -100,8 +99,6 @@ const NyAnnonse: NextPage = () => {
     }
   };
 
-  
-
   let ratingTotal = 0;
   let averageRating = 0;
   let amountOfRatings = 0;
@@ -109,24 +106,30 @@ const NyAnnonse: NextPage = () => {
   useEffect(() => {
     ratingTotal = 0;
     amountOfRatings = 0;
-    if(ratings){
-      ratings.forEach(r => {
+    if (ratings) {
+      ratings.forEach((r) => {
         ratingTotal += r.rating;
         amountOfRatings++;
-        
       });
     }
     averageRating = ratingTotal / amountOfRatings;
     console.log(averageRating);
     console.log(ratings);
-    document.getElementById("averageRating")!.innerHTML = ((Math.round(averageRating * 10) / 10).toFixed(1)) + "/5 basert på " + amountOfRatings + " vurderinger";
-    if(amountOfRatings == 1){
-      document.getElementById("averageRating")!.innerHTML = ((Math.round(averageRating * 10) / 10).toFixed(1)) + "/5 basert på 1 vurdering";
+    document.getElementById("averageRating")!.innerHTML =
+      (Math.round(averageRating * 10) / 10).toFixed(1) +
+      "/5 basert på " +
+      amountOfRatings +
+      " vurderinger";
+    if (amountOfRatings == 1) {
+      document.getElementById("averageRating")!.innerHTML =
+        (Math.round(averageRating * 10) / 10).toFixed(1) +
+        "/5 basert på 1 vurdering";
     }
-    if(!averageRating){
-      document.getElementById("averageRating")!.innerHTML = "Ingen vurderinger enda";
+    if (!averageRating) {
+      document.getElementById("averageRating")!.innerHTML =
+        "Ingen vurderinger enda";
     }
-  }, [ratings])
+  }, [ratings]);
 
   useEffect(() => {
     if (favoritedAd) {
@@ -171,16 +174,16 @@ const NyAnnonse: NextPage = () => {
             </div>
           ) : null}
           <div className="flex w-full flex-row gap-4">
-            <div className="overflow-hidden flex flex-col max-h-72">
+            <div className="flex max-h-72 flex-col overflow-hidden">
               <Image
                 src={"/images/" + advert?.image}
                 width="400"
-                height="300" 
-                alt={""}              
-                />
+                height="300"
+                alt={""}
+              />
             </div>
             <div className="flex flex-col gap-3">
-              <div className="flex h-[10rem] w-[16rem] flex-col gap-1 rounded-md bg-gray-100 p-4">
+              <div className="flex h-[10rem] w-[20rem] flex-col gap-1 rounded-md bg-gray-100 p-4">
                 <p className="flex flex-row justify-between font-semibold text-emerald-700">
                   {advert?.subCategoryName}{" "}
                 </p>
@@ -203,7 +206,7 @@ const NyAnnonse: NextPage = () => {
                   }
                 />
               </div>
-              <div className="flex h-[6rem] w-[16rem] flex-row items-center gap-3 rounded-md bg-gray-100 p-4">
+              <div className="flex h-[7rem] w-[20rem] flex-row items-center gap-3 rounded-md bg-gray-100 p-4">
                 <div className="h-[2.5rem] w-[2.5rem] rounded-full bg-black"></div>
                 <div className="flex flex-col">
                   <p
@@ -215,9 +218,7 @@ const NyAnnonse: NextPage = () => {
                     {author?.name}
                   </p>
                   <p>{author?.phone ? author.phone : "Mangler tlf"}</p>
-                  <p id="averageRating">
-                    Ikke fått noen ratinger
-                  </p>
+                  <p id="averageRating">Ikke fått noen ratinger</p>
                 </div>
               </div>
             </div>

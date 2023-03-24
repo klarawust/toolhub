@@ -74,17 +74,17 @@ const NyAnnonse: NextPage = () => {
 
   const handleUpload = async () => {
     setUploading(true);
-      try {
-        if (!selectedFile) return;
-        const formData = new FormData();
-        formData.append("myImage", selectedFile);
-        const {data} = await axios.post("/api/image", formData);
-        console.log(data);
-      } catch(error: any) {
-        console.log(error.response?.data);
-      }
+    try {
+      if (!selectedFile) return;
+      const formData = new FormData();
+      formData.append("myImage", selectedFile);
+      const { data } = await axios.post("/api/image", formData);
+      console.log(data);
+    } catch (error: any) {
+      console.log(error.response?.data);
+    }
     setUploading(false);
-  }
+  };
 
   const userId = api.profile.getLoggedInUser.useQuery().data?.id;
 
@@ -118,14 +118,14 @@ const NyAnnonse: NextPage = () => {
                 </div>
                 <div className="flex h-full flex-row justify-end gap-12">
                   <div className="left-[4rem] z-10 flex w-7/12 flex-col">
-                    <div className="z-10 h-20">
+                    <div className="z-50 h-20">
                       <p>Kategori</p>
                       <Listbox
                         value={selectedCategory}
                         onChange={setSelectedCategory}
                         name="category"
                         as="div"
-                        className="mt-1 w-full overflow-hidden rounded-3xl border-2 border-solid border-black bg-gray-100"
+                        className="z-50 mt-1 w-full overflow-hidden rounded-3xl border-2 border-solid border-black bg-gray-100"
                       >
                         <Listbox.Button className="w-full px-4 py-2 text-start">
                           {selectedCategory?.name}
@@ -152,14 +152,14 @@ const NyAnnonse: NextPage = () => {
                         </Transition>
                       </Listbox>
                     </div>
-                    <div className="h-20">
+                    <div className="z-10 h-20">
                       <p>Underkategori</p>
                       <Listbox
                         value={selectedSubCategory}
                         onChange={setSelectedSubCategory}
                         name="category"
                         as="div"
-                        className="mt-1 w-full overflow-hidden rounded-3xl border-2 border-solid border-black bg-gray-100"
+                        className="z-10 mt-1 w-full overflow-hidden rounded-3xl border-2 border-solid border-black bg-gray-100"
                       >
                         <Listbox.Button className="w-full px-4 py-2 text-start">
                           {selectedSubCategory?.name}
@@ -189,15 +189,17 @@ const NyAnnonse: NextPage = () => {
                       </Listbox>
                     </div>
                     <div className="h-30">
-                        <p>Last opp bilde</p>
-                        <input type="file" name="image"
-                          onChange={({ target }) => {
-                            if (target.files) {
-                              const file = target.files[0];
-                              setSelectedFile(file);
-                            }
-                          }}
-                        />
+                      <p>Last opp bilde</p>
+                      <input
+                        type="file"
+                        name="image"
+                        onChange={({ target }) => {
+                          if (target.files) {
+                            const file = target.files[0];
+                            setSelectedFile(file);
+                          }
+                        }}
+                      />
                     </div>
                   </div>
                   <div className="flex h-[18rem] w-full flex-row gap-12 ">

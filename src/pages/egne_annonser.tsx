@@ -39,7 +39,13 @@ const ToolFeed: NextPage = () => {
           )}
           <div className="mt-5 flex max-w-full flex-row flex-wrap gap-[0.2rem]">
             {myAds?.map((ad) => (
-              <Ad key={ad.id} title={ad.title} price={ad.price} id={ad.id} />
+              <Ad
+                key={ad.id}
+                title={ad.title}
+                price={ad.price}
+                id={ad.id}
+                imgSource={ad.image}
+              />
             ))}
           </div>
         </section>

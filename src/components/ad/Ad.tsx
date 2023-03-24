@@ -53,12 +53,14 @@ const Ad = ({ title, price, id, imgSource }: AdProps) => {
           Ledig i dag
         </div>
       ) : null}
-      <div className="h-48 w-48 rounded-2xl bg-white shadow-sm overflow-hidden">
-      <Image
-            src={"/images/" + imgSource}
-            width="200"
-            height="200"
-          />
+      <div className="h-48 w-48 overflow-hidden rounded-2xl bg-white shadow-sm">
+        <Image
+          src={"/images/" + imgSource}
+          alt={"bilde"}
+          width={200}
+          height={100}
+          className="h-[12rem] w-[12rem] object-cover"
+        />
       </div>
       <p className="text-md ml-4 mt-3 w-48">{title}</p>
       <p className="ml-4 w-48 text-sm text-gray-400">{price}</p>

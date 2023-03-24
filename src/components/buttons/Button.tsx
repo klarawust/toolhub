@@ -9,6 +9,8 @@ import {
   QueueListIcon,
   ArchiveBoxIcon,
   CalendarIcon,
+  SunIcon,
+  QuestionMarkCircleIcon,
 } from "@heroicons/react/24/outline";
 
 export enum IconOptions {
@@ -20,6 +22,8 @@ export enum IconOptions {
   QueueList = "QueueList",
   Archive = "Archive",
   Calendar = "Calendar",
+  Sun = "Sun",
+  Question = "Question",
 }
 
 export enum ColorOptions {
@@ -91,6 +95,15 @@ const Button: React.FC<ButtonProps> = ({
       ) : null}
       {icon === IconOptions.Calendar ? (
         <CalendarIcon className="mb-[4px] h-6 w-6" strokeWidth={1.5} />
+      ) : null}
+      {icon === IconOptions.Sun ? (
+        <SunIcon className="mb-[4px] h-6 w-6" strokeWidth={1.5} />
+      ) : null}
+      {icon === IconOptions.Question ? (
+        <QuestionMarkCircleIcon
+          className="mb-[4px] h-6 w-6"
+          strokeWidth={1.5}
+        />
       ) : null}
       {text ? <p className="ml-2">{text}</p> : null}
     </button>

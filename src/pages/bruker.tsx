@@ -59,12 +59,12 @@ const Profile: NextPage = () => {
         <meta name="description" content="Din profil" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="flex min-h-screen flex-col items-center justify-center bg-gray-100">
+      <main className="flex min-h-screen flex-col items-center justify-center">
         <Navbar />
 
-        <div className="container flex flex-col items-center justify-center gap-2 px-4 py-16 ">
-          <h1 className="text-4xl font-bold">Min profil</h1>
-          <form onSubmit={(e) => handleSubmit(e)}>
+        <div className="mt-[8rem] flex w-max flex-col items-center justify-center gap-2 overflow-hidden rounded-xl bg-white px-20 py-12 shadow-sm">
+          <h1 className="bg-transparent text-4xl font-bold">Min profil</h1>
+          <form onSubmit={(e) => handleSubmit(e)} className="bg-transparent">
             <InputField
               label="Navn"
               name="name"
@@ -106,14 +106,14 @@ const Profile: NextPage = () => {
                   value="Lagre endringer"
                   className="w-full cursor-pointer rounded-md bg-black px-4 py-2 text-white hover:bg-emerald-700"
                 />
-                <button
-                  className="w-full cursor-pointer rounded-md bg-black px-4 py-2 text-white hover:bg-emerald-700"
+                <input
+                  type="button"
+                  value="Logg ut"
                   onClick={() => {
                     void signOut();
                   }}
-                >
-                  Logg ut
-                </button>
+                  className="w-full cursor-pointer rounded-md bg-black px-4 py-2 text-white hover:bg-emerald-700"
+                />
               </label>
             </div>
           </form>
